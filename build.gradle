@@ -10,6 +10,13 @@ base {
     archivesName = project.archives_base_name
 }
 
+sourceSets {
+    main {
+        java.srcDirs = ["src/client/java"]
+        resources.srcDirs = ["src/client/resources"]
+    }
+}
+
 repositories {
     maven { name = 'Terraformers'; url = 'https://maven.terraformersmc.com/' }
 }
@@ -72,5 +79,5 @@ tasks.withType(org.gradle.language.jvm.tasks.ProcessResources).configureEach {
 }
 
 jar {
-    from("LICENSE") { rename { "${it}_${project.archives_base_name}" } }
+    from("LICENSE") { rename { "${it}_notfreecam" } }
 }
