@@ -23,11 +23,9 @@ public final class NotFreecamClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         toggleKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
-                "key.notfreecam.toggle", InputConstants.Type.KEYSYM,
-                InputConstants.KEY_F4, CATEGORY));
+                "key.notfreecam.toggle", InputConstants.KEY_F4, CATEGORY));
         settingsKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
-                "key.notfreecam.settings", InputConstants.Type.KEYSYM,
-                InputConstants.KEY_F6, CATEGORY));
+                "key.notfreecam.settings", InputConstants.KEY_F6, CATEGORY));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (toggleKey.consumeClick()) {
@@ -35,7 +33,7 @@ public final class NotFreecamClient implements ClientModInitializer {
                 else enable(client);
             }
             while (settingsKey.consumeClick()) {
-                if (client.player != null) client.setScreen(new FreecamSettingsScreen(client.screen));
+                if (client.player != null) client.gui.setScreen(new FreecamSettingsScreen(client.gui.screen()));
             }
 
             if (active) tickCamera(client);
