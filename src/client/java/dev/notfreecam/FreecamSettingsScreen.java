@@ -1,6 +1,6 @@
 package dev.notfreecam;
 
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -39,14 +39,14 @@ public final class FreecamSettingsScreen extends Screen {
 
     @Override
     public void onClose() {
-        if (this.minecraft != null) this.minecraft.setScreen(this.parent);
+        if (this.minecraft != null) this.minecraft.gui.setScreen(this.parent);
     }
 
     @Override
-    public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-        this.renderBackground(graphics, mouseX, mouseY, delta);
-        graphics.drawCenteredString(this.font, this.title, this.width / 2, this.height / 2 - 65, 0xFFFFFF);
-        graphics.drawCenteredString(this.font,
+    public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
+        this.extractBackground(graphics, mouseX, mouseY, delta);
+        graphics.centeredText(this.font, this.title, this.width / 2, this.height / 2 - 65, 0xFFFFFF);
+        graphics.centeredText(this.font,
                 Component.literal("WASD move  |  Space up  |  Shift down  |  Sprint = boost"),
                 this.width / 2, this.height / 2 + 35, 0xAAAAAA);
         super.render(graphics, mouseX, mouseY, delta);
