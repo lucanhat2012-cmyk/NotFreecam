@@ -78,6 +78,12 @@ tasks.withType(org.gradle.language.jvm.tasks.ProcessResources).configureEach {
     dependsOn(tasks.named("generateModIcon"))
 }
 
+// The icon is generated into the resources directory; make that ordering explicit
+// for the optional sources archive as well.
+tasks.named("sourcesJar") {
+    dependsOn(tasks.named("generateModIcon"))
+}
+
 jar {
     from("LICENSE") { rename { "${it}_notfreecam" } }
 }
