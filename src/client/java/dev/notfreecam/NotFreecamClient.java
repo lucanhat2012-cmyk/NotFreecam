@@ -35,7 +35,7 @@ public final class NotFreecamClient implements ClientModInitializer {
                 else enable(client);
             }
             while (settingsKey.consumeClick()) {
-                if (client.player != null) client.setScreen(new FreecamSettingsScreen());
+                if (client.player != null) client.setScreen(new FreecamSettingsScreen(client.screen));
             }
 
             if (active) tickCamera(client);
