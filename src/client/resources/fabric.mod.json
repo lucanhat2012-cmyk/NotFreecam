@@ -6,9 +6,20 @@
   "description": "A configurable client-side detached camera for Minecraft 26.3.",
   "authors": ["NotFreecam"],
   "license": "MIT",
+  "icon": "assets/notfreecam/icon.png",
   "environment": "client",
   "entrypoints": {
-    "client": ["dev.notfreecam.NotFreecamClient"]
+    "client": ["dev.notfreecam.NotFreecamClient"],
+    "modmenu": ["dev.notfreecam.NotFreecamModMenu"]
+  },
+  "custom": {
+    "modmenu": {
+      "summary": "Detach your camera and explore freely.",
+      "links": {
+        "modmenu.github": "https://github.com/lucanhat2012-cmyk/NotFreecam"
+      },
+      "update_checker": false
+    }
   },
   "depends": {
     "fabricloader": ">=0.20.1",
