@@ -49,6 +49,6 @@ public final class FreecamSettingsScreen extends Screen {
         graphics.centeredText(this.font,
                 Component.literal("WASD move  |  Space up  |  Shift down  |  Sprint = boost"),
                 this.width / 2, this.height / 2 + 35, 0xAAAAAA);
-        super.render(graphics, mouseX, mouseY, delta);
+        super.extractRenderState(graphics, mouseX, mouseY, delta);
     }
 }
