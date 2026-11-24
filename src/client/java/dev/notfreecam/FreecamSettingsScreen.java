@@ -6,8 +6,15 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
 public final class FreecamSettingsScreen extends Screen {
+    private final Screen parent;
+
     public FreecamSettingsScreen() {
+        this(null);
+    }
+
+    public FreecamSettingsScreen(Screen parent) {
         super(Component.literal("NotFreecam Settings"));
+        this.parent = parent;
     }
 
     @Override
@@ -28,6 +35,11 @@ public final class FreecamSettingsScreen extends Screen {
     private static Component speedLabel() {
         return Component.literal(String.format(java.util.Locale.ROOT,
                 "Camera speed: %.2f", NotFreecamClient.getSpeed()));
+    }
+
+    @Override
+    public void onClose() {
+        if (this.minecraft != null) this.minecraft.setScreen(this.parent);
     }
 
     @Override
